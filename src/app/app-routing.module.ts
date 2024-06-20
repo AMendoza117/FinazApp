@@ -5,7 +5,8 @@ import { TokenComponent } from './token/token.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', component: TokenComponent }
+  { path: '', component: LoginComponent },
+  { path: 'token', component: TokenComponent }
 ];
 
 @NgModule({
