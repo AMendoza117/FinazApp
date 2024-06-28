@@ -1,16 +1,32 @@
-import { Component, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router'
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { FullComponent } from './layouts/full/full.component';
 import { LoginComponent } from './login/login.component';
-import { TokenComponent } from './token/token.component';
 
-const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: '', component: LoginComponent },
-  { path: 'token', component: TokenComponent }
+export const Approutes: Routes = [
+  {
+    path: '',
+    component: FullComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'about',
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+      },
+      {
+        path: 'component',
+        loadChildren: () => import('./component/component.module').then(m => m.ComponentsModule)
+      }
+    ]
+  },
+  {
+    path: '**',
+    redirectTo: '/starter'
+  }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
