@@ -51,5 +51,9 @@ export class SignupComponent implements OnInit {
         // Navegar a la ruta del componente al que deseas dirigirte
         this.router.navigate(['/recuperar-contrasena']);
     }
+    r() {
+        // Navegar a la ruta del componente al que deseas dirigirte
+        this.router.navigate(['/register']);
+    }
 }
 

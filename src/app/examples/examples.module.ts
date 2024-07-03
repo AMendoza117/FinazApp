@@ -17,6 +17,7 @@ import { GetTokenComponent } from 'app/components/recuperarContraseña/getToken/
 import { ActualizarContraseñaComponent } from 'app/components/recuperarContraseña/actualizarContraseña/actualizarContraseña.component';
 import { Login2FAComponent } from './login2FA/login2FA.component';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     imports: [
@@ -37,7 +38,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
         SignupComponent,
         GetTokenComponent,
         ActualizarContraseñaComponent,
-        Login2FAComponent
+        Login2FAComponent,
+        RegisterComponent
     ],
     // Provee los servicios necesarios
     providers: [

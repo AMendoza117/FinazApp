@@ -261,4 +261,11 @@ export class ApiService {
     const url = `${this.apiUrl}/api/obtenerPerfil.php?username=${username}`;
     return this.http.get(url);
   }
+
+  register(usuario: any): Observable<any> {
+    const url = `${this.apiUrl}/api/registrarUsuario.php`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post(url, usuario, { headers });
+  }
 }
