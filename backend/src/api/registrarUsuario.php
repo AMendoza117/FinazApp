@@ -19,10 +19,11 @@ $request = json_decode($postdata);
 $username = $request->username;
 $nombre = $request->nombre;
 $apellidos = $request->apellidos;
-$role = $request->role;
+$role = "usuario";
+$password = $request->password;
 
 // Generar una contraseña segura
-$password = generarContrasena();
+//$password = generarContrasena();
 
 $to = $username;
 
@@ -66,7 +67,7 @@ function generarContrasena($longitud = 10) {
 function sendEmail($to, $username, $password)
 {
   try {
-    $subject = "Bienvenid@ a Gestor de Proyectos";
+    $subject = "Bienvenid@ a FinazApp";
 
     // Cargar el contenido HTML de tu plantilla de correo electrónico
     $html_message = file_get_contents("./../assets/template/registrarUserEmail.html");
