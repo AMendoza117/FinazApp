@@ -21,10 +21,10 @@ if ($consulta->num_rows > 0) {
     // Comparar el token recibido con el token almacenado
     if ($token === $token) { // Comparación de tokens
         // Aquí va la lógica para enviar el correo electrónico
-
+        
         // Generar un nuevo token único para el usuario
         $newToken = bin2hex(random_bytes(8));
-
+        
         // Actualizar el token en la base de datos
         $updateTokenQuery = $con->prepare("UPDATE usuarios SET token = ? WHERE id = ?");
         $updateTokenQuery->bind_param("si", $newToken, $id);

@@ -1,3 +1,5 @@
-<router-outlet>
-    <app-spinner></app-spinner>
-</router-outlet>
+<app-navbar *ngIf="showRegularNavbar"></app-navbar>
+<app-navbar2 *ngIf="!showRegularNavbar"></app-navbar2>
+<router-outlet></router-outlet>
+<app-mapa></app-mapa>
+<app-footer *ngIf="removeFooter()"></app-footer>
