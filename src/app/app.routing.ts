@@ -21,12 +21,14 @@ import { RegistrarUsuarioComponent } from './components/registrar-usuario/regist
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { EditarPerfilComponent } from './components/miPerfil/editar-perfil.component';
+import { RegisterComponent } from './examples/register/register.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: ComponentsComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'landing', component: LandingComponent },
   { path: 'nucleoicons', component: NucleoiconsComponent },
   { path: 'ver-proyectop', component: NotificationComponent },
