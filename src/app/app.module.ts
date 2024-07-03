@@ -72,3 +72,4 @@ import { NavbarComponent2 } from './shared/navbar2/navbar.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

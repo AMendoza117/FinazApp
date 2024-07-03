@@ -109,3 +109,4 @@ export class AppComponent implements OnInit {
         return regularRoutes.some(route => url.includes(route));
       }
 }
+
