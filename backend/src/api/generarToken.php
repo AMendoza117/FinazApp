@@ -87,13 +87,6 @@ $html_message = str_replace("[token]", $token, $html_message);
     // Nuevas configuraciones para CORS
     $mail->SMTPKeepAlive = true;
     $mail->Timeout = 30;
-    $mail->SMTPOptions = [
-      'ssl' => [
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => true,
-      ],
-    ];
 
     // Configuración del correo
     $mail->setFrom($remitente, $nremitente);

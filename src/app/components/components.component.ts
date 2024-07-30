@@ -41,10 +41,6 @@ export class ComponentsComponent implements OnInit {
                 input_group[i].classList.remove('input-group-focus');
             });
         }
-        
-        this.toastr.info('Conoce nuestros precios', 'Alerta').onTap.subscribe(() => {
-            this.scrollTo('contacto');
-        });
 
     }
 
