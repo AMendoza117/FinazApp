@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbdModalComponent } from 'app/components/modal/modal.component';
 
 @Component({
     selector: 'app-footer',
