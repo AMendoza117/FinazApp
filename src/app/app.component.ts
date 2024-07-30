@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
           '/actualizar-contrasena',
           '/login2FA',
           '/ver-proyectop',
-          '/register'
+          '/register',
           // Agrega más rutas aquí si es necesario
         ];
       
