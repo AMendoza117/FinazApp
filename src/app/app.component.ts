@@ -80,7 +80,6 @@ export class AppComponent implements OnInit {
           '/home',
           '/signup',
           '/landing',
-          '/nucleoicons',
           '/recuperar-contrasena',
           '/actualizar-contrasena',
           '/login2FA',
@@ -101,6 +100,7 @@ export class AppComponent implements OnInit {
           '/gusuarios',
           '/mi-perfil',
           '/dashboard',
+          '/nucleoicons',
           '/registrar-proyecto',
           '/ver-proyecto/:id'
           // Agrega más rutas aquí si es necesario

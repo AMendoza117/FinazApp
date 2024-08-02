@@ -6,6 +6,7 @@ import { Lider } from 'app/Models/Lider.model';
 import { AuthService } from 'app/services/auth.service';
 import { ApiService } from 'app/api.service';
 import { Actividad } from 'app/Models/Actividad.model';
+import { Chart } from 'chart.js';
 
 
 @Component({
@@ -33,16 +34,37 @@ export class DashboardComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.update();
-
-    const userRole = localStorage.getItem('userRole');
-
-    // Verifica el rol del usuario para determinar si se muestra la tabla
-    if (userRole === 'admin' || userRole === 'lider') {
-      this.mostrarTabla = true;
-    }
+    this.initializeChart();
   }
   
+  initializeChart() {
+    const ctx = document.getElementById('expensesChart') as HTMLCanvasElement;
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Débito', 'Crédito'],
+        datasets: [{
+          label: 'Gastos',
+          data: [23099.76, 4500.00],
+          backgroundColor: [
+            '#007bff',
+            '#f44336'
+          ],
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+          }
+        }
+      }
+    });
+  }
+
 
   // Implementar el método update para refrescar la información
   update(): void {

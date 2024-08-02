@@ -23,8 +23,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'landing', component: LandingComponent },
-  { path: 'nucleoicons', component: NucleoiconsComponent },
-  { path: 'ver-proyectop', component: NotificationComponent },
+  { path: 'nucleoicons', component: NucleoiconsComponent, canActivate: [AuthGuardService] },
+  { path: 'gastos', component: NotificationComponent },
 
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   { path: 'recuperar-contrasena', component: GetTokenComponent},
