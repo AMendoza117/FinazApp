@@ -1,5 +1,6 @@
 import { Input, Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Chart } from 'chart.js';
 
 @Component({
     selector: 'app-notification',
@@ -16,42 +17,44 @@ export class NotificationComponent {
   }
 
   ngOnInit(): void {
-    // Simula la carga de datos de demostración
-    this.verProyecto = {
-      nombreProyecto: "Proyecto de demostración",
-      folio: "PRO-001",
-      descripcion: "Descripción del proyecto de demostración.",
-      fechaInicio: "2024-01-01",
-      fechaTermino: "2024-12-31",
-      estadoProyecto: "En curso",
-      costo: 100000,
-      nombreLiderProyecto: "Líder de Proyecto de Demostración",
-      pdfs: ["pdf1.pdf", "pdf2.pdf"], // Nombres de archivos PDF de demostración
-      stakeholders: [ // Datos de stakeholders de demostración
-        {
-          nombreCompleto: "Stakeholder 1",
-          correoElectronico: "stakeholder1@example.com",
-          telefono: "123456789"
-        },
-        {
-          nombreCompleto: "Stakeholder 2",
-          correoElectronico: "stakeholder2@example.com",
-          telefono: "987654321"
-        }
-      ],
-      pagosParciales: [ // Datos de pagos parciales de demostración
-        {
-          monto: 5000,
-          fechaPago: "2024-03-15"
-        },
-        {
-          monto: 7000,
-          fechaPago: "2024-06-30"
-        }
-      ]
-    };
+    this.initializeChart();
   }
 
+  initializeChart() {
+    const ctx = document.getElementById('expensesLineChart') as HTMLCanvasElement;
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['1 ene', '5 ene', '10 ene', '15 ene', '20 ene', '25 ene', '31 ene'],
+        datasets: [{
+          label: 'Gastos',
+          data: [500, 1500, 2500, 3000, 4000, 4500, 27599.76],
+          borderColor: '#007bff',
+          backgroundColor: 'rgba(0, 123, 255, 0.1)',
+          fill: true,
+          tension: 0.1,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            beginAtZero: true,
+          },
+          y: {
+            beginAtZero: true,
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+  }
+  
   terminado(idProyecto: number): void {
     // Simula la acción de marcar el proyecto como terminado
     this.toastr.success('El proyecto se ha marcado como terminado.', 'Exito');

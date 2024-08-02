@@ -1,0 +1,48 @@
+<div class="container my-day">
+    <div class="header">
+        <h1>Mi día a día</h1>
+        <span class="historico">Histórico</span>
+    </div>
+    <div class="date-range">1 - 31 enero</div>
+    <div class="summary">
+        <div class="income">
+            <h2>Ingresos</h2>
+            <p class="amount">$35,670.00</p>
+            <div class="bar">
+                <div class="income-bar"></div>
+            </div>
+        </div>
+        <div class="expenses">
+            <h2>Gastos</h2>
+            <p class="amount">$27,599.76</p>
+            <div class="bar">
+                <div class="expenses-bar"></div>
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <span>Débito</span>
+                    <span>$23,099.76</span>
+                </div>
+                <div class="detail-item">
+                    <span>Crédito</span>
+                    <span>$4,500.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="health">
+        <div class="icon"></div>
+        <p>Conoce el estado de tu salud financiera.</p>
+    </div>
+    <div class="expenses-overview">
+        <div class="header">
+            <h2>MIS GASTOS</h2>
+            <a [routerLink]="['/nucleoicons']" class="view-more">Ver más</a>
+        </div>
+        <div class="chart">
+            <div class="total-expenses">
+                <canvas id="expensesChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

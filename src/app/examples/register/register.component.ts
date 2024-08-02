@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { PasswordValidator } from 'app/services/password.validator';
 
 @Component({
     selector: 'app-register',
@@ -15,10 +16,7 @@ export class RegisterComponent implements OnInit {
     focus;
     focus1;
 
-    nombre: string = '';
-    apellidos: string = '';
-    username: string = '';
-    password: string = '';
+    formulario: FormGroup;
 
     constructor(
         private router: Router, 
@@ -26,26 +24,32 @@ export class RegisterComponent implements OnInit {
         private authService: AuthService, 
         private toastr: ToastrService, 
         private apiService: ApiService
-    ) {}
+    ) {
+        this.formulario = this.formBuilder.group({
+            nombre: ['', Validators.required],
+            apellidos: ['', Validators.required],
+            username: ['', [Validators.required, Validators.email]],
+            password: ['', [
+                Validators.required,
+                Validators.minLength(8),
+                PasswordValidator.strong
+            ]]
+        });
+    }
 
     ngOnInit() { }
 
     register() {
-        const user = {
-            nombre: this.nombre,
-            apellidos: this.apellidos,
-            username: this.username,
-            password: this.password
-        };
-
-        this.apiService.register(user).subscribe((response) => {
-            if (response.success) {
-                this.toastr.success('Registro exitoso', 'Éxito');
-                this.rc();
-            } else {
-                this.toastr.error('Error en el registro', 'Error');
-            }
-        });
+        if (this.formulario.valid) {
+            this.apiService.register(this.formulario.value).subscribe((response) => {
+                if (response.success) {
+                    this.toastr.success('Registro exitoso', 'Éxito');
+                    this.router.navigate(['/signup']);
+                } else {
+                    this.toastr.error('Error en el registro', 'Error');
+                }
+            });
+        }
     }
 
     rc() {

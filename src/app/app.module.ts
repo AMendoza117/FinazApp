@@ -20,6 +20,7 @@ import { GetTokenComponent } from './components/recuperarContraseña/getToken/ge
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { EditarPerfilComponent } from './components/miPerfil/editar-perfil.component';
 import { NavbarComponent2 } from './shared/navbar2/navbar.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { NavbarComponent2 } from './shared/navbar2/navbar.component';
     //ActualizarContraseñaComponent,
     //GetTokenComponent
     EditarPerfilComponent,
-    NavbarComponent2
+    NavbarComponent2,
+    NotificationComponent,
 
 
   ],
@@ -47,7 +49,7 @@ import { NavbarComponent2 } from './shared/navbar2/navbar.component';
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
     
   ],
   providers: [],
