@@ -29,7 +29,7 @@
 }
 
 .historico {
-    color: #007bff;
+    color: #117C5D;
     cursor: pointer;
 }
 
@@ -42,7 +42,8 @@
 .summary {
     display: flex;
     justify-content: space-between;
-    background: #007bff;
+    margin-top: 100px;
+    background: #117C5D;
     color: #fff;
     border-radius: 10px;
     padding: 20px;
@@ -127,7 +128,7 @@
 }
 
 .view-more {
-    color: #007bff;
+    color: #117C5D;
     text-decoration: none;
     font-size: 14px;
 }
@@ -148,9 +149,14 @@
     font-size: 16px;
 }
 
-#expensesChart {
-    max-width: 500px;
-    max-height: 500px;
-    width: 100%;
-    height: auto;
+.saldo-actual {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    background-color: #117C5D;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
