@@ -1,150 +1,146 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Proyecto } from 'app/Models/Proyecto.model';
-import { LiderConProyectos } from 'app/Models/liderConProyectos.model';
-import { Lider } from 'app/Models/Lider.model';
-import { AuthService } from 'app/services/auth.service';
-import { ApiService } from 'app/api.service';
-import { Actividad } from 'app/Models/Actividad.model';
-import { Chart } from 'chart.js';
-
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Chart, registerables } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
-  proyectos: Proyecto[];
-  mostrarTabla = true;
-  lideresConProyectos: LiderConProyectos[];
-  numProyectos: number;
-  numProyectosActivos: number;
-  numProyectosCompletados: number;
-  nuevoLider: Lider = {
-    idLiderProyecto: null,
-    nombre: ''
-  };
-  actividades: Actividad[];
-  lideresConProyectos1: LiderConProyectos[];
-  numActividades: number;
-  numActividadesActivas: number;
-  numActividadesCompletadas: number;
+export class DashboardComponent implements OnInit, AfterViewInit {
 
-  constructor(private apiService: ApiService, private router: Router, private authService: AuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.initializeChart();
+    // Registrar todos los componentes de Chart.js
+    Chart.register(...registerables);
   }
-  
+
+  ngAfterViewInit(): void {
+    // Inicializar todos los gráficos después de que la vista se haya inicializado
+    this.initializeChart();
+    this.initializeMonthlyExpensesChart();
+    this.initializeCategoryExpensesChart();
+  }
+
+  // Gráfico de pastel para gastos
   initializeChart() {
     const ctx = document.getElementById('expensesChart') as HTMLCanvasElement;
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Débito', 'Crédito'],
-        datasets: [{
-          label: 'Gastos',
-          data: [23099.76, 4500.00],
-          backgroundColor: [
-            '#007bff',
-            '#f44336'
-          ],
-          hoverOffset: 4
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'bottom',
+
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Débito', 'Crédito'],
+          datasets: [{
+            label: 'Gastos',
+            data: [23099.76, 4500.00],
+            backgroundColor: ['#117C5D', '#f44336'],
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+            }
           }
         }
-      }
-    });
-  }
-
-
-  // Implementar el método update para refrescar la información
-  update(): void {
-    this.loadActividades();
-    this.loadProyectos();
-    this.loadLideresConProyectos();
-  }
-
-  redirectToRegistrarProyecto() {
-    this.router.navigate(['/registrar-proyecto']);
-  }
-
-
-  loadProyectos() {
-    this.apiService.loadProyectos().subscribe(
-      (proyectos: Proyecto[]) => {
-        this.proyectos = proyectos;
-        this.numProyectos = proyectos.length;
-        this.numProyectosActivos = proyectos.filter(p => p.estadoProyecto === 'Activo').length;
-        this.numProyectosCompletados = proyectos.filter(p => p.estadoProyecto === 'Completado').length;
-      },
-      (error) => {
-        console.error('Error al cargar proyectos:', error);
-      }
-    );
-  }
-
-  loadActividades() {
-    this.apiService.loadActividades().subscribe(
-      (actividades: Actividad[]) => {
-        this.actividades = actividades;
-        this.numActividades = actividades.length;
-        this.numActividadesActivas = actividades.filter(p => p.estadoActividad === 'Activa').length;
-        this.numActividadesCompletadas = actividades.filter(p => p.estadoActividad === 'Completada').length;
-      },
-      (error) => {
-        console.error('Error al cargar actividades:', error);
-      }
-    );
-  }
-
-  loadLideresConProyectos() {
-    this.apiService.loadLideresConProyectos().subscribe(
-      (lideres: LiderConProyectos[]) => {
-        this.lideresConProyectos = lideres;
-      },
-      (error) => {
-        console.error('Error al cargar líderes con proyectos:', error);
-      }
-    );
-  }
-
-  redirectToProyectoDetalle(proyecto: Proyecto) {
-    if (proyecto && proyecto.idProyecto) {
-      const url = ['ver-proyecto', proyecto.idProyecto];
-      this.router.navigate(url);
+      });
     } else {
-      console.error('ID de proyecto indefinido. No se puede navegar.');
+      console.error('No se pudo obtener el contexto del canvas para el gráfico de pastel.');
     }
   }
 
-  redirectToRegistrarActividad() {
-    this.router.navigate(['/registrar-actividad']);
-  }
+  // Gráfico de línea para gastos por mes
+  initializeMonthlyExpensesChart() {
+    const ctx = document.getElementById('monthlyExpensesChart') as HTMLCanvasElement;
 
-  agregarLider() {
-    this.apiService.registrarLider(this.nuevoLider).subscribe(
-      (response) => {
-        if (response && response.success) {
-          this.loadLideresConProyectos();
-        } else {
-          console.error('Error al agregar lider.');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+          datasets: [{
+            label: 'Gastos Mensuales',
+            data: [500, 600, 700, 800, 750, 650, 700, 720, 680, 730, 780, 800], // Datos de ejemplo
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              callbacks: {
+                label: (tooltipItem) => `${tooltipItem.label}: $${tooltipItem.raw}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              beginAtZero: true
+            },
+            y: {
+              beginAtZero: true
+            }
+          }
         }
-      },
-      (error) => {
-        console.error('Error en la solicitud para agregar lider: ', error);
-      }
-    )
+      });
+    } else {
+      console.error('No se pudo obtener el contexto del canvas para el gráfico de línea.');
+    }
   }
 
+  // Gráfico de barras para gastos por categoría
+  initializeCategoryExpensesChart() {
+    const ctx = document.getElementById('categoryExpensesChart') as HTMLCanvasElement;
+
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Alimentación', 'Transporte', 'Entretenimiento', 'Salud', 'Vivienda'],
+          datasets: [{
+            label: 'Gastos por Categoría',
+            data: [300, 150, 200, 180, 250], // Datos de ejemplo
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: '#117C5D',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              callbacks: {
+                label: (tooltipItem) => `${tooltipItem.label}: $${tooltipItem.raw}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              beginAtZero: true
+            },
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    } else {
+      console.error('No se pudo obtener el contexto del canvas para el gráfico de barras.');
+    }
+  }
 }
-
-
