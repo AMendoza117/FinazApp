@@ -4,13 +4,13 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-modal-content',
   template: `
-    <div class="modal-header">
+    <div id="modal-headerxd" class="modal-header">
         <h5 class="modal-title text-center">Politica de Privacidad</h5>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body">
+    <div id="modal-bodyxd" class="modal-body">
       <div class="row">
       <div class="col-sm-13">
       <h5>Privacy Policy
@@ -206,7 +206,8 @@ export class NgbdModalContent {
 
 @Component({
   selector: 'app-modal-component',
-  templateUrl: './modal.component.html'
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.css'],
 })
 export class NgbdModalComponent {
   constructor(private modalService: NgbModal) {}

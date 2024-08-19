@@ -21,6 +21,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { EditarPerfilComponent } from './components/miPerfil/editar-perfil.component';
 import { NavbarComponent2 } from './shared/navbar2/navbar.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { FinancialAdviceModalComponent, FinancialAdviceModalContent } from './components/modal2/modal.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { NotificationComponent } from './components/notification/notification.co
     EditarPerfilComponent,
     NavbarComponent2,
     NotificationComponent,
-
+    FinancialAdviceModalComponent,
+    FinancialAdviceModalContent
 
   ],
   imports: [

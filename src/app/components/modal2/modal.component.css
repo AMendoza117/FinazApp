@@ -1,0 +1,18 @@
+#financial-advice-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff; /* Fondo azul */
+    color: #fff; /* Texto blanco */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+    transition: background-color 0.3s ease;
+}
+
+#financial-advice-button:hover {
+    background-color: #0056b3; /* Fondo más oscuro al pasar el ratón */
+}
