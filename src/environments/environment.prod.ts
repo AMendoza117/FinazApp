@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  baseUrl: "https://gestordeproyectosutng.000webhostapp.com/backend",
-  baseAvatar: "https://gestordeproyectosutng.000webhostapp.com/assets/avatar/",
-  base: "https://gestordeproyectosutng.000webhostapp.com"
+  baseUrl: "https://finazapp.lovestoblog.com/backend",
+  baseAvatar: "https://finazapp.lovestoblog.com/assets/avatar/",
+  base: "https://finazapp.lovestoblog.com"
 };
