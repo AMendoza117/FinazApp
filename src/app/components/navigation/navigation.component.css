@@ -1,0 +1,61 @@
+/* Estilos generales */
+.politicas-header {
+    background-color: #f0f0f0; /* Color de fondo suave */
+    padding: 15px;
+    border-bottom: 1px solid #ddd; /* Línea divisoria sutil */
+}
+
+.politicas-title {
+    font-weight: bold;
+    margin-bottom: 0; /* Elimina margen inferior del título */
+    font-size: 1.25rem; /* Tamaño de fuente adecuado */
+}
+
+.politicas-body {
+    padding: 2rem; /* Espaciado general */
+    line-height: 1.6; /* Mejora la legibilidad */
+    font-size: 0.875rem; /* Tamaño de fuente legible */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+h5, h6 {
+    margin-top: 1.5rem; /* Espacio entre secciones */
+    margin-bottom: 1rem; /* Espacio debajo del título */
+}
+
+h6 {
+    font-weight: bold; /* Destacar secciones menores */
+}
+
+ul {
+    padding-left: 2rem; /* Espaciado para listas */
+}
+
+a {
+    color: #007bff; /* Color de enlace */
+    text-decoration: none; /* Sin subrayado */
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}
+
+.politicas-footer {
+    padding: 15px;
+    border-top: 1px solid #ddd; /* Línea divisoria superior */
+    display: flex;
+    justify-content: flex-end; /* Alinear botón a la derecha */
+}
+
+.btn-link {
+    border: none;
+    background: transparent;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-link:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}

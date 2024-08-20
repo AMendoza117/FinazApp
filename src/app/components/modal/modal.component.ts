@@ -4,13 +4,13 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-modal-content',
   template: `
-    <div id="modal-headerxd" class="modal-header">
+    <div id="modal-headerxd" class="modal-headerxd" style="width: 1000px !important;">
         <h5 class="modal-title text-center">Politica de Privacidad</h5>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div id="modal-bodyxd" class="modal-body">
+    <div id="modal-bodyxd" class="modal-bodyxd">
       <div class="row">
       <div class="col-sm-13">
       <h5>Privacy Policy
@@ -193,7 +193,7 @@ By visiting this page on our website: wms.com/contact</h5>
       </div>
       </div>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footerxd">
       <div class="left-side">
         <button type="button" class="btn btn-default btn-link" (click)="activeModal.close('Close click')">Cerrar</button>
       </div>

@@ -15,6 +15,7 @@ import { Login2FAComponent } from './examples/login2FA/login2FA.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { EditarPerfilComponent } from './components/miPerfil/editar-perfil.component';
 import { RegisterComponent } from './examples/register/register.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'recuperar-contrasena', component: GetTokenComponent},
   { path: 'actualizar-contrasena', component: ActualizarContraseñaComponent},
   { path: 'login2FA', component: Login2FAComponent},
-  { path: 'mi-perfil', component: EditarPerfilComponent,  canActivate: [AuthGuardService]}
+  { path: 'mi-perfil', component: EditarPerfilComponent,  canActivate: [AuthGuardService]},
+  { path: 'politicasdeprivacidad' , component: NavigationComponent}
 
 ];
 
