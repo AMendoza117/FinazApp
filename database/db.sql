@@ -1,8 +1,7 @@
 
-
-CREATE DATABASE finazapp;
-
 USE finazapp;
+
+ALTER USER 'admin'@'%' IDENTIFIED WITH mysql_native_password BY 'admin';
 
 --
 -- Table structure for table `usuarios`
@@ -32,3 +31,9 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+
+
+USE sistema_ventas_db;
+
+ALTER USER 'admin'@'%' IDENTIFIED WITH mysql_native_password BY 'admin';
