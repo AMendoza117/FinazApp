@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: finazapp-back-service
+  labels:
+    app: finazapp-back
+spec:
+  ports:
+    - name: finazapp-back
+      port: 80
+      nodePort: 30781
+  type: NodePort
+  selector: 
+    app: finazapp-back
+    

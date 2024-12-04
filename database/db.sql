@@ -33,7 +33,3 @@ ALTER TABLE `usuarios`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 
-
-USE sistema_ventas_db;
-
-ALTER USER 'admin'@'%' IDENTIFIED WITH mysql_native_password BY 'admin';

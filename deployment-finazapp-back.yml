@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finazapp-back-deployment
+spec:
+  selector:
+    matchLabels:
+      app: finazapp-back
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: finazapp-back
+    spec:
+      containers:
+        - name: finazapp-back
+          image: finazapp-back
+          ports:
+            - containerPort: 80
+              name: http

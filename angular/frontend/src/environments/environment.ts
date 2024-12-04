@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://localhost:8080",
+  baseUrl: "http://192.168.49.2:30781",
   baseAvatar: "https://finazapp.lovestoblog.com/assets/avatar/",
   base: "https://finazapp.lovestoblog.com"
 };

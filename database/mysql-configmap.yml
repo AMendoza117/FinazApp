@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+data:
+  MYSQL_DATABASE: "finanzapp"
+  MYSQL_USER: "user"
+  MYSQL_PASSWORD: "password"
+  MYSQL_ROOT_PASSWORD: "rootpassword"
+  init.sql: |
+    CREATE TABLE `usuarios` (
+      `id` int NOT NULL,
+      `username` varchar(50) NOT NULL,
+      `password` varchar(64) NOT NULL,
+      `nombre` varchar(100) DEFAULT NULL,
+      `apellidos` varchar(100) DEFAULT NULL,
+      `role` enum('admin','usuario','cliente') NOT NULL,
+      `token` varchar(250) DEFAULT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        
+    ALTER TABLE `usuarios`
+      ADD PRIMARY KEY (`id`),
+      ADD UNIQUE KEY `username` (`username`);
+
+    ALTER TABLE `usuarios`
+      MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
